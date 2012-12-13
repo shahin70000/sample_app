@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
 
   has_secure_password
-	has_many :microposts
+	has_many :microposts, dependent: :destroy
 
   validates_confirmation_of :password
   validates :password_confirmation, presence: true
