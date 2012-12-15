@@ -12,6 +12,7 @@ class MicropostsController < ApplicationController
 			flash[:success] = "Micropost created!"
 			redirect_to root_url
 		else
+			@feed_items = current_user.feed.paginate(page: params[:page]) # was [] in the book, see "Listing 10.45" in "http://ruby.railstutorial.org/chapters/user-microposts#sec-a_proto_feed"
 			render 'static_pages/home'
 		end
 	end
